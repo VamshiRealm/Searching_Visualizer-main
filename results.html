@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Data Results</title>
+    <link rel="stylesheet" href="./Css/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <div class="outer-wrapper">
+        <!-- Nav bar section -->
+        <nav class="navbar container shadow">
+          <h2><a href="index.html">Back to Searching</a></h2>
+        </nav>
+
+        <!-- Main body section -->
+        <div class="main">
+          <div class="main-wrapper shadow">
+            <div class="stored-data">
+              <h3>Generated Array</h3>
+              <div id="generated-array"></div>
+            </div>
+
+            <div class="stored-data">
+              <h3>Search History</h3>
+              <div id="search-history"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- JavaScript to load the stored data -->
+    <script>
+      // Retrieve stored array and search history from localStorage
+      const generatedArray = JSON.parse(localStorage.getItem('generatedArray'));
+      const searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+
+      // Display the generated array
+      if (generatedArray && generatedArray.length > 0) {
+        document.getElementById('generated-array').innerText = `Array: [${generatedArray.join(', ')}]`;
+      } else {
+        document.getElementById('generated-array').innerText = 'No array generated yet.';
+      }
+
+      // Display the search history
+      if (searchHistory && searchHistory.length > 0) {
+        document.getElementById('search-history').innerText = `History: [${searchHistory.join(', ')}]`;
+      } else {
+        document.getElementById('search-history').innerText = 'No searches made yet.';
+      }
+    </script>
+  </body>
+</html>
